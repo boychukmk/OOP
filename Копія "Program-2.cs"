@@ -1,0 +1,433 @@
+﻿
+
+Menu();
+
+
+
+
+
+
+static void Menu()
+{
+    Console.WriteLine("Enter length of array: ");
+    int n = Convert.ToInt32(Console.ReadLine());
+    int[] array1 = new int[n]; //виділення пам'яті 
+    int[] array2 = new int[n];
+    int[] array3 = new int[n];
+    int [] arrayTask5 = new int[n]; 
+    
+    char command; 
+   
+    do
+    {
+        Console.WriteLine("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        Console.WriteLine("~~~~~~~~~~  Menu of command  ~~~~~~~~~~~~~");
+        Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        Console.WriteLine("1 Sort array");
+        Console.WriteLine("2 Compare elements on same index");
+        Console.WriteLine("3 Eratosphen sorting");
+        Console.WriteLine("4 Pair elements");
+        Console.WriteLine("5 Linear searching");
+        Console.WriteLine("6 matrix");
+        Console.WriteLine("7 ....");
+        //Console.WriteLine("8 Not linear equation");
+        //Console.WriteLine("9 string processing");
+        Console.WriteLine("0 exit");
+        Console.WriteLine();
+        Console.WriteLine("select of command, press number of key");
+        command = (char)Console.Read();
+        Console.ReadLine();
+        Console.WriteLine("------------------------------------------\n\n");
+        switch (command)
+        {
+            case '1': Task1(array1, array2); break;
+            case '2': Task2(array1, array2); break;
+            case '3': EratosphenSort(array3); break;
+            case '4': Task4(array3); break;
+            case '5': Task5(arrayTask5); break;
+            case '6': Task6(); break;
+            case '7': Task7(); break;
+            //case '8': Task8(); break;
+            //case '9': Task9(); break;
+            case '0': Console.WriteLine("Bye!"); break;
+            default: Console.WriteLine("wrong command"); break;
+        }
+        
+    } while (command != '0');
+} 
+/// <summary>
+/// завдання1
+/// </summary>
+/// <param name="arr"> масив чисел</param>
+/// 
+static void Task1(int[] arr, int[] arrsort)
+{
+    arraygenerate(arr);
+    Console.WriteLine("Array before sort: ");
+    arrayprint(arr);
+    arraysort(arr, arrsort);
+    Console.WriteLine("------------------------------------------");
+    Console.WriteLine("Array after sort: ");
+    arrayprint(arr);
+}
+/// <summary>
+/// генерація масиву
+/// </summary>
+/// <param name="arr"> масив чисел</param>
+/// 
+static void arraygenerate(int[] arr)
+{
+    // Random - клас для генерації випадкових чисел
+    Random aRand = new Random();
+    // заповнення масиву
+    for (int i = 0; i < arr.Length; i++)
+        arr[i] = aRand.Next(50);
+}
+/// <summary>
+/// друк масиву
+/// </summary>
+/// <param name="arr">масив чисел</param>
+/// 
+static void arrayprint(int[] arr)
+{
+    //Console.WriteLine("Your array: \n");
+    for (int i = 0; i < arr.Length; i++)
+        Console.Write(arr[i] + "  ");
+    Console.WriteLine();
+}
+/// <summary>
+///  сортування масиву вибором
+/// </summary>
+/// <param name="arr">масив для сортування</param>
+/// <param name="arr2">масив для завд2</param>
+static void arraysort(int[] arr,  int[] arr2)
+{
+    //int [] array2 = new int [arr.Length];
+    for (int i = 0;i < arr.Length;i++)
+        arr2[i] = arr[i];
+
+    int indx; //переменная для хранения индекса минимального элемента массива
+    for (int i = 0; i < arr.Length; i++) //проходим по массиву с начала и до конца
+    {
+        indx = i; //считаем, что минимальный элемент имеет текущий индекс 
+        for (int j = i; j < arr.Length; j++) //ищем минимальный элемент в неотсортированной части
+        {
+            if (arr[j] < arr[indx])
+            {
+                indx = j; //нашли в массиве число меньше, чем arr[indx] - запоминаем его индекс в массиве
+            }
+        }
+        if (arr[indx] == arr[i]) //если минимальный элемент равен текущему значению - ничего не меняем
+            continue;
+        //меняем местами минимальный элемент и первый в неотсортированной части
+        int temp = arr[i]; //временная переменная, чтобы не потерять значение arr[i]
+        arr[i] = arr[indx];
+        arr[indx] = temp;
+    }
+}
+/// <summary>
+///  ///////////////////////////////////////////////
+/// </summary>
+/// <param name="arr">масив </param>
+static void Task2(int[] arr, int[]arr2)
+{
+    int j=0;
+    //Console.WriteLine("Elements :");
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i] == arr2[i])
+        {
+            Console.WriteLine("Index:  {0}", i);
+            j++;
+        }
+    }
+    Console.WriteLine("Number of elements which haven`t changed indexs:  {0}" , j);
+    Console.WriteLine("------------------------------------------");
+}
+
+static void EratosphenSort(int [] arr3)
+{
+     int  i, j, s;
+
+    Console.WriteLine("Write the limit of generation: ");
+    int N = Convert.ToInt32(Console.ReadLine());
+    // Random - клас для генерації випадкових чисел
+    Random aRand = new Random();
+    // заповнення масиву
+    for ( i = 0; i < arr3.Length; i++)
+        arr3[i] = aRand.Next(1, N);
+    Console.WriteLine(" Your array: ");
+    arrayprint(arr3);
+    Console.WriteLine("------------------------------------------");
+
+    for (i = 0; i < arr3.Length; i++)
+    {
+        arr3[i] = i;
+    }
+    for (i = 0; i < arr3.Length; i++)
+     {
+         Console.Write(arr3[i] + " ");
+     }
+     Console.WriteLine();
+     //sorting
+
+     arr3[1] = 0;
+    for (s = 0; s < arr3.Length; s++)
+    {
+        if (arr3[s] != 0)
+        {
+            for (j = s * 2; j < arr3.Length; j += s)
+            {
+                arr3[j] = 0 ;
+            }
+        }
+    }
+
+    for (i = 0; i < arr3.Length; i++)
+     {
+         Console.Write(arr3[i] + " ");
+     }
+ }
+
+
+
+  static void Task4(int[] arr3)
+{
+    int k=0, n=0;
+    for (int i = 0; i < arr3.Length; i++)
+    {
+        if (arr3[i] != 0)
+        {
+            if (arr3[i] % 2 == 0)
+            {
+                k++;
+            }
+        }
+        else if (i % 2 == 0)
+        {
+            n++;
+        }
+
+    }
+    Console.WriteLine("Number of pair elements is " +k);
+    Console.WriteLine("Number of elements with pair index is " + n);
+
+}
+
+
+/// <summary>
+///  Array Sort
+/// </summary>
+static void sortArr(int[] arr)
+{
+    int temp;
+
+    for (int i = 0; i < arr.Length - 1; i++)
+    {
+        for (int j = 0; j < arr.Length - i - 1; j++)
+        {
+            if (arr[j] < arr[j + 1])
+            {
+                // меняем элементы местами
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    arrayprint(arr);
+}
+/// <summary>
+/// Binar search. Array
+/// </summary>
+static void Task5(int[] arr)
+{
+    arraygenerate(arr);
+    arrayprint(arr);
+    Console.WriteLine(" To start binar search we need to sort array: ");
+    sortArr(arr);
+    Console.WriteLine(" Enter value to search with binar method: ");
+    int x = Convert.ToInt32(Console.ReadLine());
+    bool flag = false;
+    int L = 0;
+    int R = arr.Length;
+    int middle;
+    while (L < R)
+    {
+        middle = L + (R - L) / 2;
+        if (x > arr[middle])
+            R = middle;
+        else if (x < arr[middle])
+            L = middle + 1;
+        else
+        {
+            flag = true;
+            break;
+        }
+    }
+    if (flag == true)
+    {
+        middle = L + (R - L) / 2;
+        Console.WriteLine("Value '{0}' found with index '{1}'", x, middle);
+    }
+    else Console.WriteLine("Element doesn`t exist in our array! ");
+
+}
+
+
+
+
+
+
+static void Task6()
+{
+    Console.Write("Enter number of rows: ");
+    int row = int.Parse(Console.ReadLine()); //ведення кількості рядків матриці
+    Console.Write("Enter number of colunms: ");
+    int col = int.Parse(Console.ReadLine()); //введення кількості стовпчиків матриці
+    int[,] matr = new int[row, col]; //створення об'єкта матриці
+    matrgenerate(row, col, matr);  //генерація матриці
+    matrprint(row, col, matr);   //друк матриці
+    sumrow(row, col, matr);
+    summofall(row, col, matr);
+    //Console.Write("Enter number of row for sum: ");
+    //int r = int.Parse(Console.ReadLine());  //введення номера рядка для розрхунку його суми
+    //int summa = sumrow(row, col, matr, r);  //розрахунок суми рядка r
+    //Console.WriteLine("sum of row " + r + " = " + summa);
+}
+/// <summary>
+/// генерація матриці
+/// </summary>
+/// <param name="str">кількість рядків матриці</param>
+/// <param name="stolb">кількість стовпчиків матриці</param>
+/// <param name="matr">значення елементів матриці</param>
+static void matrgenerate(int str, int stolb, int[,] matr)
+{
+
+    Random rand = new Random();
+    for (int i = 0; i < str; i++)
+    {
+        for (int j = 0; j < stolb; j++)
+        {
+            //Console.Write("enter value: ");
+            //matr[i, j] = int.Parse(Console.ReadLine()); введення елемента матриці
+            matr[i, j] = rand.Next(20); //генерація елемента матриці
+        }
+    }
+}
+
+/// <summary>
+/// ///////////////
+/// </summary>
+/// <param name="str">кількість рядків матриці</param>
+/// <param name="stolb">кількість стовпчиків матриці</param>
+/// <param name="matr">значення елементів матриці</param>
+static void matrprint(int str, int stolb, int[,] matr)
+{
+    for (int i = 0; i < str; i++)
+    {
+        for (int j = 0; j < stolb; j++)
+        {
+            Console.Write(matr[i, j] + "\t");
+        }
+        Console.WriteLine();
+    }
+}
+
+static void sumrow(int str, int stolb, int[,] matr)
+{
+    int[] summa = new int[str];
+    for (int i = 0; i < str; i++)
+    {
+        summa[i] = 0;
+        for (int j = 0; j < stolb; j ++)
+        {
+            summa[i]+=matr[i, j];
+      
+        }
+        Console.WriteLine("Sum of row {0} is {1}", i, summa[i]);
+    }
+    int max = summa[0];
+    int indexM=0;
+    for (int i = 0; i < str;i++)
+    {
+        if (max<summa[i])
+        {
+            max = summa[i];
+            indexM = i;
+        }
+    }
+    Console.WriteLine(" Max element is value {0} with index {1}", max, indexM);
+}
+
+static void summofall(int str, int stolb, int[,] matr)
+{
+    int sum = 0;
+    for (int i = 0; i < str; i++)
+    {
+        
+        for (int j = 0; j < stolb; j++)
+        {
+            sum += matr[i, j];
+
+        }
+        
+    }
+    Console.WriteLine("Sum of matrix = " + sum);
+}
+
+static void Task7()
+{
+    Console.Write("Enter number of rows: ");
+    int row = int.Parse(Console.ReadLine()); //ведення кількості рядків матриці
+    Console.Write("Enter number of colunms: ");
+    int col = int.Parse(Console.ReadLine()); //введення кількості стовпчиків матриці
+    int[,] matr = new int[row, col]; //створення об'єкта матриці
+    matrgenerate(row, col, matr);  //генерація матриці
+    matrprint(row, col, matr);
+    int t = 0;
+  
+    int [] minEl = new int[row];
+    int [] maxEl = new int[col];
+    //int min = minEl[0];
+    //int max = maxEl[0];
+
+
+
+    for (int i = 0; i < row; i++)
+    {
+          minEl[i]= matr[i, 0];
+       for(int j = 0;j < col; j++)
+        {
+            if(minEl[i]> matr[i,j])
+            {
+                minEl[i] = matr[i, j];
+            }
+        }
+    }
+
+    for (int j = 0; j < col; j++)
+    {
+        maxEl[j] = matr[0, j];
+        for(int i =0; i < row;i++)
+        {
+            if (maxEl[j]< matr[i,j])
+            {
+                maxEl[j] = matr[i, j];
+            }
+        }
+    }
+
+
+    for (int i = 0; i < row; i++)
+    {
+        Console.WriteLine(" ", minEl[i]);
+    }
+
+    for (int j = 0; j < col; j++)
+    {
+        Console.WriteLine(" ", maxEl[j]);
+    }
+}
+    
+
