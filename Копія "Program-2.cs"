@@ -1,15 +1,8 @@
-﻿
-
 Menu();
-
-
-
-
-
 
 static void Menu()
 {
-    Console.WriteLine("Enter length of array: ");
+    Console.WriteLine(" Enter length of array: ");
     int n = Convert.ToInt32(Console.ReadLine());
     int[] array1 = new int[n]; //виділення пам'яті 
     int[] array2 = new int[n];
@@ -23,18 +16,18 @@ static void Menu()
         Console.WriteLine("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         Console.WriteLine("~~~~~~~~~~  Menu of command  ~~~~~~~~~~~~~");
         Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        Console.WriteLine("1 Sort array");
-        Console.WriteLine("2 Compare elements on same index");
-        Console.WriteLine("3 Eratosphen sorting");
-        Console.WriteLine("4 Pair elements");
-        Console.WriteLine("5 Linear searching");
-        Console.WriteLine("6 matrix");
-        Console.WriteLine("7 ....");
-        //Console.WriteLine("8 Not linear equation");
-        //Console.WriteLine("9 string processing");
-        Console.WriteLine("0 exit");
+        Console.WriteLine(" 1 Sort array");
+        Console.WriteLine(" 2 Compare elements on same index");
+        Console.WriteLine(" 3 Eratosphen sorting");
+        Console.WriteLine(" 4 Pair elements");
+        Console.WriteLine(" 5 Linear searching");
+        Console.WriteLine(" 6 matrix");
+        Console.WriteLine(" 7 ....");
+        Console.WriteLine(" 8 Bisection");
+        Console.WriteLine(" 9 string processing");
+        Console.WriteLine(" 0 exit");
         Console.WriteLine();
-        Console.WriteLine("select of command, press number of key");
+        Console.WriteLine(" select of command, press number of key");
         command = (char)Console.Read();
         Console.ReadLine();
         Console.WriteLine("------------------------------------------\n\n");
@@ -47,10 +40,10 @@ static void Menu()
             case '5': Task5(arrayTask5); break;
             case '6': Task6(); break;
             case '7': Task7(); break;
-            //case '8': Task8(); break;
-            //case '9': Task9(); break;
-            case '0': Console.WriteLine("Bye!"); break;
-            default: Console.WriteLine("wrong command"); break;
+            case '8': Task8(); break;
+            case '9': Task9(); break;
+            case '0': Console.WriteLine(" Bye!"); break;
+            default: Console.WriteLine(" wrong command"); break;
         }
         
     } while (command != '0');
@@ -63,11 +56,11 @@ static void Menu()
 static void Task1(int[] arr, int[] arrsort)
 {
     arraygenerate(arr);
-    Console.WriteLine("Array before sort: ");
+    Console.WriteLine(" Array before sort: ");
     arrayprint(arr);
     arraysort(arr, arrsort);
     Console.WriteLine("------------------------------------------");
-    Console.WriteLine("Array after sort: ");
+    Console.WriteLine(" Array after sort: ");
     arrayprint(arr);
 }
 /// <summary>
@@ -137,11 +130,11 @@ static void Task2(int[] arr, int[]arr2)
     {
         if (arr[i] == arr2[i])
         {
-            Console.WriteLine("Index:  {0}", i);
+            Console.WriteLine(" Index:  {0}", i);
             j++;
         }
     }
-    Console.WriteLine("Number of elements which haven`t changed indexs:  {0}" , j);
+    Console.WriteLine(" Number of elements which haven`t changed indexs:  {0}" , j);
     Console.WriteLine("------------------------------------------");
 }
 
@@ -149,7 +142,7 @@ static void EratosphenSort(int [] arr3)
 {
      int  i, j, s;
 
-    Console.WriteLine("Write the limit of generation: ");
+    Console.WriteLine(" Write the limit of generation: ");
     int N = Convert.ToInt32(Console.ReadLine());
     // Random - клас для генерації випадкових чисел
     Random aRand = new Random();
@@ -209,8 +202,8 @@ static void EratosphenSort(int [] arr3)
         }
 
     }
-    Console.WriteLine("Number of pair elements is " +k);
-    Console.WriteLine("Number of elements with pair index is " + n);
+    Console.WriteLine(" Number of pair elements is " +k);
+    Console.WriteLine(" Number of elements with pair index is " + n);
 
 }
 
@@ -244,9 +237,9 @@ static void Task5(int[] arr)
 {
     arraygenerate(arr);
     arrayprint(arr);
-    Console.WriteLine(" To start binar search we need to sort array: ");
+    Console.WriteLine(" To start binary search we need to sort array: ");
     sortArr(arr);
-    Console.WriteLine(" Enter value to search with binar method: ");
+    Console.WriteLine(" Enter value to find: ");
     int x = Convert.ToInt32(Console.ReadLine());
     bool flag = false;
     int L = 0;
@@ -268,9 +261,9 @@ static void Task5(int[] arr)
     if (flag == true)
     {
         middle = L + (R - L) / 2;
-        Console.WriteLine("Value '{0}' found with index '{1}'", x, middle);
+        Console.WriteLine(" Value '{0}' found with index '{1}'", x, middle);
     }
-    else Console.WriteLine("Element doesn`t exist in our array! ");
+    else Console.WriteLine(" Element doesn`t exist in our array! ");
 
 }
 
@@ -281,9 +274,9 @@ static void Task5(int[] arr)
 
 static void Task6()
 {
-    Console.Write("Enter number of rows: ");
+    Console.Write(" Enter number of rows: ");
     int row = int.Parse(Console.ReadLine()); //ведення кількості рядків матриці
-    Console.Write("Enter number of colunms: ");
+    Console.Write(" Enter number of colunms: ");
     int col = int.Parse(Console.ReadLine()); //введення кількості стовпчиків матриці
     int[,] matr = new int[row, col]; //створення об'єкта матриці
     matrgenerate(row, col, matr);  //генерація матриці
@@ -345,7 +338,7 @@ static void sumrow(int str, int stolb, int[,] matr)
             summa[i]+=matr[i, j];
       
         }
-        Console.WriteLine("Sum of row {0} is {1}", i, summa[i]);
+        Console.WriteLine(" Sum of row {0} is {1}", i, summa[i]);
     }
     int max = summa[0];
     int indexM=0;
@@ -373,14 +366,14 @@ static void summofall(int str, int stolb, int[,] matr)
         }
         
     }
-    Console.WriteLine("Sum of matrix = " + sum);
+    Console.WriteLine(" Sum of matrix = " + sum);
 }
 
 static void Task7()
 {
-    Console.Write("Enter number of rows: ");
+    Console.Write(" Enter number of rows: ");
     int row = int.Parse(Console.ReadLine()); //ведення кількості рядків матриці
-    Console.Write("Enter number of colunms: ");
+    Console.Write(" Enter number of colunms: ");
     int col = int.Parse(Console.ReadLine()); //введення кількості стовпчиків матриці
     int[,] matr = new int[row, col]; //створення об'єкта матриці
     matrgenerate(row, col, matr);  //генерація матриці
@@ -429,5 +422,169 @@ static void Task7()
         Console.WriteLine(" ", maxEl[j]);
     }
 }
-    
 
+
+    static double f(double x)
+    {
+    //рівняння, для якого шукаємо корені
+    //(x^2+x+1)(x^2+x+1)12=0
+    double y =  (Math.Pow(x, 2) + x +1 ) * (Math.Pow(x, 2) + x + 1 ) - 12;
+        return y;
+    }
+    // --------------------------------------------------------------------
+    static double bicect(double left, double right)
+    {
+        //метод бісекцій
+        double eps = 0.01; //точність розрахунку
+        double center = 0;
+        while (right - left > eps * 2)
+        {
+            center = (right - left) / 2 + left;
+            if (f(center) * f(left) > 0) //перевірка, чи функція проходить через 0
+                left = center;
+            else
+                right = center;
+        }
+        return center;
+    }
+//  ----------------------------------------------------
+static void Task8()
+{
+    
+    //метод бісекцій
+        double x1 = bicect(0, 100);
+        double x2 = bicect(-100, 0);
+    Console.WriteLine(" Your equation : \n (x^2+x+1)*(x^2+x+1)-12=0\n");
+        Console.WriteLine(" Bisection method: ");
+        Console.WriteLine(" x1 = {0};\n x2 = {1}", x1, x2);
+   
+    Console.WriteLine("\n\n To check the result let`s enter x1/x2 in equation. ");
+    Console.WriteLine(" Wich 'x' would you like to enter? \n 1 - x1\n 2 - x2");
+    int choose = Convert.ToInt32(Console.ReadLine());
+    if (choose == 1)
+    {
+        double resultcase = (Math.Pow(x1, 2) + x1 + 1) * (Math.Pow(x1, 2) + x1 + 1) - 12;
+        Console.WriteLine(" ( " + x1 + " ^2 + " + x1 + " 1 ) * (" + x1 + " ^2 + " + x1 + " 1) - 12 = " + resultcase);
+        double errorcase = 0 - resultcase;
+        if (resultcase == 0)
+        {
+            Console.WriteLine(" Great!\n 0 = 0");
+        }
+        else
+        {
+            Console.WriteLine(" The error is " + errorcase);
+        }
+        if (errorcase >= 1)
+        {
+            Console.WriteLine(" Error is too big! ");
+        }
+        else
+        {
+            Console.WriteLine(" That is ok! Program is correct. ");
+        }
+        Console.WriteLine(" Would you like to check with other 'x'?\n '1' - if yes");
+        int choose2 = Convert.ToInt32(Console.ReadLine());
+        if (choose2 == 1)
+        {
+            double resultcase2 = (Math.Pow(x2, 2) + x2 + 1) * (Math.Pow(x2, 2) + x2 + 1) - 12;
+            Console.WriteLine(" ( " + x2 + " ^2 + " + x2 + " 1 ) * (" + x2 + " ^2 + " + x2 + " 1) - 12 = " + resultcase2);
+            double errorcase2 = 0 - resultcase2;
+            if (resultcase2 == 0)
+            {
+                Console.WriteLine(" Great!\n 0 = 0");
+            }
+            else
+            {
+                Console.WriteLine(" The error is " + errorcase2);
+            }
+            if (errorcase2 >= 1)
+            {
+                Console.WriteLine(" Error is too big! ");
+            }
+            else
+            {
+                Console.WriteLine(" That is ok! Program is correct. ");
+            }
+        }
+    }
+    else  
+    {
+        double resultcase = (Math.Pow(x2, 2) + x2 + 1) * (Math.Pow(x2, 2) + x2 + 1) - 12;
+        Console.WriteLine(" ( " + x2 + " ^2 + " + x2 + " 1 ) * (" + x2 + " ^2 + " + x2 + " 1) - 12 = " + resultcase);
+        double errorcase = 0 - resultcase;
+        if (resultcase == 0)
+        {
+            Console.WriteLine(" Great!\n 0 = 0");
+        }
+        else
+        {
+            Console.WriteLine(" The error is " + errorcase);
+        }
+        if (errorcase >= 1)
+        {
+            Console.WriteLine(" Error is too big! ");
+        }
+        else
+        {
+            Console.WriteLine(" That is ok! Program is correct. ");
+        }
+        Console.WriteLine(" Would you like to check with other 'x'?\n '1' - if yes");
+        int choose2 = Convert.ToInt32(Console.ReadLine());
+        if(choose2 == 1)
+        {
+            double resultcase1 = (Math.Pow(x1, 2) + x1 + 1) * (Math.Pow(x1, 2) + x1 + 1) - 12;
+            Console.WriteLine(" ( " + x1 + " ^2 + " + x1 + " 1 ) * (" + x1 + " ^2 + " + x1 + " 1) - 12 = " + resultcase1);
+            double errorcase1 = 0 - resultcase1;
+            if (resultcase1 == 0)
+            {
+                Console.WriteLine(" Great!\n 0 = 0");
+            }
+            else
+            {
+                Console.WriteLine(" The error is " + errorcase1);
+            }
+            if (errorcase1 >= 1)
+            {
+                Console.WriteLine(" Error is too big! ");
+            }
+            else
+            {
+                Console.WriteLine(" That is ok! Program is correct. ");
+            }
+        }
+    }
+   
+   
+   
+}
+
+static void Task9()
+{
+    Console.WriteLine(" Enter a string: ");
+    string str = Console.ReadLine();
+    string[] words = str.Split(' ');
+    int number = 0;
+    Console.WriteLine(" Words in the string wich starts with capital letter are: ");
+    bool isCap = false;
+    foreach (string word in words)
+    {
+        isCap = Char.IsUpper(word[0]);
+        if (isCap)
+        {
+            number++;
+            Console.WriteLine(word);
+        }
+
+    }
+    Console.WriteLine(" Number of words wich starts with capital letter is " + number);
+
+
+    string allLastChars = "";
+    foreach (string word in words)
+    {
+        allLastChars += word[word.Length-1];
+    }
+    Console.Write(" Word of last letters : ");
+    Console.Write(" "+allLastChars);
+
+}
